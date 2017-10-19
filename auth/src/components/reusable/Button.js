@@ -5,7 +5,7 @@ const Button = ({ onPress, children }) => {
   return (
     <TouchOpacity
       onPress={onPress}
-      style={buttonStyle}
+      style={styles.buttonStyle}
     >
       <Text>
         {children}
