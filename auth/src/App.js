@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
+import Header from './components/reusable/Header';
+
 class App extends Component {
   render() {
     return (
       <View>
-        <Text>Auth App!!!</Text>
+        <Header headerText={'Aye aye Auth!!'} />
       </View>
     );
   }
