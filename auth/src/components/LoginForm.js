@@ -1,17 +1,22 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
-import { Button, Container, Section } from './reusable';
+import { Button, Container, Section, Input } from './reusable';
 
 class LoginForm extends Component {
+  state = { text: '' };
+
   render() {
     return (
       <Container>
-        <Section />
         <Section>
-          <Text>
-            LoginForm
-          </Text>
+          <Input
+            /* this is just the way text input is handled */
+            label="Email:"
+            onChangeText={text => this.setState({ text })}
+            value={this.state.text}
+          />
         </Section>
+        <Section />
+
         <Section>
           <Button>
             Login
@@ -22,4 +27,13 @@ class LoginForm extends Component {
   }
 }
 
+/*
+const styles = {
+  inputStyles: {
+    height: 20,
+    width: 100,
+    borderColor: '#000'
+  }
+};
+*/
 export default LoginForm;
