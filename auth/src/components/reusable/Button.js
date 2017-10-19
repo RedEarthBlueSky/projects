@@ -1,16 +1,16 @@
 import React from 'react';
-import { Text, TouchOpacity } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
 const Button = ({ onPress, children }) => {
   return (
-    <TouchOpacity
+    <TouchableOpacity
       onPress={onPress}
       style={styles.buttonStyle}
     >
-      <Text>
+      <Text style={styles.textStyle}>
         {children}
       </Text>
-    </TouchOpacity>
+    </TouchableOpacity>
   );
 };
 
@@ -34,5 +34,7 @@ const styles = {
     paddingBottom: 10
   }
 };
-
-export default Button;
+// refactored from export default to object {Button: Button}
+// in order to use ComponentHandler.js
+// because we have a key value the same we can just use Button
+export { Button };

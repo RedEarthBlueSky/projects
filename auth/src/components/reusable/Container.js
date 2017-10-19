@@ -25,5 +25,7 @@ const styles = {
     shadowRadius: 2
   }
 };
-
-export defalt Container;
+// refactored from export default to object {Container: Container}
+// in order to use ComponentHandler.js
+// because we have a key value the same we can just use Button
+export { Container };

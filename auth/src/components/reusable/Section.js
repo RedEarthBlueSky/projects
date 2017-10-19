@@ -20,5 +20,7 @@ const styles = {
     position: 'relative'
   }
 };
-
-export default Section;
+// refactored from export default to object {Section: Section}
+// in order to use ComponentHandler.js
+// because we have a key value the same we can just use Button
+export { Section };

@@ -31,5 +31,8 @@ const styles = {
     fontSize: 20
   }
 };
+// refactored from export default to object {Header: Header}
+// in order to use ComponentHandler.js
+// because we have a key value the same we can just use Button
 
-export default Header;
+export { Header };
