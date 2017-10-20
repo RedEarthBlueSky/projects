@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import { Button, Container, Section, Input } from './reusable';
 
 class LoginForm extends Component {
-  state = { text: '' };
+  state = { email: '' };
 
   render() {
     return (
       <Container>
         <Section>
           <Input
-            /* this is just the way text input is handled */
             label="Email:"
-            onChangeText={text => this.setState({ text })}
-            value={this.state.text}
+            onChangeText={email => this.setState({ email })}
+            placeholder="user@gmail.com"
+            value={this.state.email}
           />
-        </Section>
+      </Section>
+
         <Section />
 
         <Section>
