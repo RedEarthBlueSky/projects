@@ -14,6 +14,10 @@ class App extends Component {
       storageBucket: 'authenication-module.appspot.com',
       messagingSenderId: '1002853733277'
     });
+
+    firebase.auth().onAuthStateChanged((user) => {
+      
+    });
   }
 
   render() {
