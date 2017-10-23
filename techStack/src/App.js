@@ -19,7 +19,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component<{}> {
+class App extends Component<{}> {
   render() {
     return (
       <View style={styles.container}>
@@ -55,3 +55,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default App;
