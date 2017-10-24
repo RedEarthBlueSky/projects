@@ -1,20 +1,37 @@
 import React, { Component } from 'react';
+import { ListView } from 'react-native';
 import { connect } from 'react-redux';
 
 class LibraryList extends Component {
+  componentWillMount() {
+    const listData = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2
+    });
+
+    this.dataSource = listData.cloneWithRows(this.props.stateAsProp);
+  }
+
+  renderRow() {
+    
+  }
+
   render() {
     console.log(this.props);  // returns the array
-    return;
+    return (
+      <ListView
+        dataSource={this.dataSource}
+        renderRow={this.renderRow}
+      />
+    );
   }
 }
 
 
-//  function takes global state object, the application state from inside
-//  redux store, map it and take some properties off the state object and
+//  function takes global state object from in
+//  redux store, maps properties off the state object to
 //  provide them as props to the library list component
-
 const mapStateToProps = state => {
-  return { stateDataAsProp: state.libraries };
+  return { stateAsProp: state.libraries };
 };
 
 //  call the function connect() when connect is called it calls another
