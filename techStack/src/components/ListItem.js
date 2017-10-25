@@ -1,6 +1,6 @@
 // responsible for showing a single library - data - item
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, TouchableWithoutFeedback, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Section } from './common';
 import * as actions from '../actions';
@@ -8,15 +8,20 @@ import * as actions from '../actions';
 class ListItem extends Component {
   render() {
     const { titleStyle } = styles;
-
-    console.log(this.props);
+    const { id, title } = this.props.library;
 
     return (
-      <Section>
-        <Text style={titleStyle}>
-          {this.props.library.title}
-        </Text>
-      </Section>
+      <TouchableWithoutFeedback
+        onPress={() => this.props.selectLibrary(id)}
+      >
+        <View>
+          <Section>
+            <Text style={titleStyle}>
+              {title}
+            </Text>
+          </Section>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }

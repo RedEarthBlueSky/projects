@@ -7,8 +7,10 @@ import { Header } from './components/common';
 import LibraryList from './components/LibraryList';
 
 const App = () => {
+  const store = createStore(reducers);
+  console.log(store);
   return (
-    <Provider store={createStore(reducers)}>
+    <Provider store={store}>
       <View style={{ flex: 1 }}>
         <Header headerText='Tech Stack App' />
         <Text>This is my app!</Text>
