@@ -27,7 +27,6 @@ class LibraryList extends Component {
   }
 }
 
-
 //  function takes global state object from in
 //  redux store, maps properties off the state object to
 //  provide them as props to the library list component

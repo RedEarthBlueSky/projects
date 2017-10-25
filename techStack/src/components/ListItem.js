@@ -5,12 +5,23 @@ import { Section } from './common';
 
 class ListItem extends Component {
   render() {
+    const { titleStyle } = styles;
+
     return (
       <Section>
-        <Text>{this.props.library.title}</Text>
+        <Text style={titleStyle}>
+          {this.props.library.title}
+        </Text>
       </Section>
     );
   }
 }
+
+const styles = {
+  titleStyle: {
+    fontSize: 18,
+    paddingLeft: 15
+  }
+};
 
 export default ListItem;
