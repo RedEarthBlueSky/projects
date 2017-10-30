@@ -1,18 +1,31 @@
 // responsible for showing a single library - data - item
 import React, { Component } from 'react';
-import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import {
+  Text,
+  TouchableWithoutFeedback,
+  View,
+  LayoutAnimation
+} from 'react-native';
 import { connect } from 'react-redux';
 import { Section } from './common';
 import * as actions from '../actions';
 
 class ListItem extends Component {
-  renderDescription() {
-    const { library, selectedLibraryId } = this.props;
+  componentWillUpdate() {  // called whenever component is to be rerendered
+    LayoutAnimation.spring();
+  }
 
-    if (library.id === selectedLibraryId) {
+
+  renderDescription() {
+    const { library, expanded } = this.props;
+
+    if (expanded) {
       return (
-        <Text>{library.description}</Text>
-      );
+        <Section>
+          <Text>
+            {library.description}
+          </Text>
+        </Section>);
     }
   }
 
@@ -44,8 +57,9 @@ const styles = {
   }
 };
 
-const mapStateToProps = state => {
-  return { selectedLibraryId: state.selectedLibraryId };
+const mapStateToProps = (state, ownProps) => {
+  const expanded = state.selectedLibraryId === ownProps.library.id;
+  return { expanded };
 };
 
 export default connect(mapStateToProps, actions)(ListItem);
