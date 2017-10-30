@@ -34,7 +34,7 @@
   {"id": 8,
     "title": "Axios",
     "description": "Promise based HTTP client for the browser and node.js. With Axios, you can make XMLHttpRequests from the browser or Node with the full Promise Api."
-  }
+  },
   {"id": 9,
     "title": "Webpack",
     "description": "Webpack is a module bundler. It packs CommonJs/AMD modules i. e. for the browser. Allows to split your codebase into multiple bundles, which can be loaded on demand."
