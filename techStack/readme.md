@@ -1,0 +1,1 @@
+techStack is an example of a dynamically generated list - currently populated from a static json file - using react and redux.  It is basically the next step up from the previous albums library component
