@@ -16,3 +16,7 @@ Login Form Using Redux - previous component was React only
 ![React and Redux plan for app](./img/Screen Shot 2017-10-31 at 17.40.27.png "React and Redux plan")
 
 ![alternate text](./img/Screen Shot 2017-10-31 at 17.54.51.png "hover title")
+
+Using Redux Action Creators to handle login data
+
+![Component lifecycle](./img/Screen Shot 2017-11-01 at 11.16.03.png "Login Component lifecycle")
