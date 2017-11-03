@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import {
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
+  LOGIN_USER_FAIL,
   LOGIN_USER_SUCCESS
 } from './types';
 
@@ -20,16 +21,26 @@ export const passwordChanged = (text) => {
   };
 };
 
+//  misstep of logic here of trying to create a new user if login fails
+//  rather than prompting email/password unrecognized
+//  recover password
+//  create new user
+//  this logic progression doesn't work
 export const loginUser = ({ email, password }) => {
   return (dispatch) => {
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(user => loginUserSuccess(dispatch, user))
       .catch(() => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then(user => loginUserSuccess(dispatch, user));
+          .then(user => loginUserSuccess(dispatch, user))
+          .catch(() => loginUserFail(dispatch));
       });
   };
 };
+
+const loginUserFail = (dispatch) => {
+  dispatch({ type: LOGIN_USER_FAIL });
+}
 
 const loginUserSuccess = (dispatch, user) => {
   dispatch({
