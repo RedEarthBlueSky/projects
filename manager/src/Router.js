@@ -11,13 +11,28 @@ const RouterComponent = () => {
   return (
     <Router sceneStyle={{ paddingTop: 0 }}>
       <Scene key='root'>
-        <Scene key='auth'>
-          <Scene key='login' component={LoginForm} title='Please Login' />
-        </Scene>
-        
-        <Scene key='main'>
-          <Scene key='employeeList' component={EmployeeList} title='Employees' />
-        </Scene>
+
+          <Scene
+            key='login'
+            component={LoginForm}
+            title='Please Login'
+            initial
+          />
+
+
+          <Scene
+            //  this is a frkn hack but only way can find to hide the back button
+            //  as I do not want the user to navigate back to the login screen
+            type='reset'
+            //  end hack
+            renderBackButton={() => null}
+            onRight={() => console.log('right!')}
+            rightTitle='Add Employee'
+            key='employeeList'
+            component={EmployeeList}
+            title='Employees'
+          />
+
       </Scene>
     </Router>
   );
