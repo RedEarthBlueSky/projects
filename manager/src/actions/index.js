@@ -54,5 +54,7 @@ const loginUserSuccess = (dispatch, user) => {
     payload: user
   });
 
-  Actions.employeeList();
+  //  relates to the key component of the scene
+  //  on successful login we natigate to the employeeList screen
+  Actions.main();
 };
