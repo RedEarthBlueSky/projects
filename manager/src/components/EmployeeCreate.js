@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { connect } from 'react-redux';
+import { employeeUpdate } from '../actions';
 import { Container, Section, Input, Button } from './common';
 
 class EmployeeCreate extends Component {
@@ -10,17 +11,21 @@ class EmployeeCreate extends Component {
           <Input
             label='Name'
             placeholder='Employee name'
+            value={this.props.name}
+            onChangeText={value => this.props.employeeUpdate({ prop: 'name', value })}
           />
         </Section>
         <Section>
           <Input
             label='Phone'
             placeholder='555-555-555'
+            value={this.props.phone}
+            onChangeText={value => this.props.employeeUpdate({ prop: 'phone', value })}
           />
         </Section>
-        <Section>
-          <Text>Section 3</Text>
-        </Section>
+        
+        <Section />
+
         <Section>
           <Button>
             Create
@@ -31,4 +36,10 @@ class EmployeeCreate extends Component {
   }
 }
 
-export default EmployeeCreate;
+const mapStateToProps = (state) => {
+  const { name, phone, shift } = state.employeeForm;
+
+  return { name, phone, shift };
+};
+
+export default connect(mapStateToProps, { employeeUpdate })(EmployeeCreate);
