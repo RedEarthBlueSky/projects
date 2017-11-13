@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Picker } from 'react-native';
+import { Picker, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { employeeUpdate } from '../actions';
 import { Container, Section, Input, Button } from './common';
@@ -7,8 +7,8 @@ import { Container, Section, Input, Button } from './common';
 class EmployeeCreate extends Component {
   render() {
     return (
-      <Container>
-        <Section>
+      <Container style={{ flex: 1, flexDirection: 'column' }}>
+        <Section style={{ flex: 0.075 }}>
           <Input
             label='Name'
             placeholder='Employee name'
@@ -16,7 +16,7 @@ class EmployeeCreate extends Component {
             onChangeText={value => this.props.employeeUpdate({ prop: 'name', value })}
           />
         </Section>
-        <Section>
+        <Section style={{ flex: 0.075 }}>
           <Input
             label='Phone'
             placeholder='555-555-555'
@@ -24,9 +24,11 @@ class EmployeeCreate extends Component {
             onChangeText={value => this.props.employeeUpdate({ prop: 'phone', value })}
           />
         </Section>
-        <Section>
+
+        <Section style={{ flex: 0.4, flexDirection: 'column' }}>
+          <Text style={styles.pickerText}>Select a Shift</Text>
           <Picker
-            style={{ flex: 1 }}
+            style={{ flex: 0.3 }}
             selectedValue={this.props.shift}
             onValueChange={value => this.props.employeeUpdate({ prop: 'shift', value })}
           >
@@ -40,7 +42,7 @@ class EmployeeCreate extends Component {
           </Picker>
         </Section>
 
-        <Section>
+        <Section style={{ flex: 0.08 }}>
           <Button>
             Create
           </Button>
@@ -49,6 +51,15 @@ class EmployeeCreate extends Component {
     );
   }
 }
+
+const styles = {
+  pickerText: {
+    flex: 0.1,
+    fontSite: 18,
+    paddingLeft: 20,
+    paddingBottom: 0
+  }
+};
 
 const mapStateToProps = (state) => {
   const { name, phone, shift } = state.employeeForm;

@@ -17,7 +17,6 @@ const RouterComponent = () => {
             key='login'
             component={LoginForm}
             title='Please Login'
-            initial
           />
 
 
@@ -37,6 +36,7 @@ const RouterComponent = () => {
             key='employeeCreate'
             component={EmployeeCreate}
             title='Create Employee'
+            initial
           />
 
       </Scene>

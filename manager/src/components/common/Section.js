@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 const Section = (props) => {
   return (
-    <View style={styles.sectionStyle}>
+    <View style={[styles.sectionStyle, props.style]}>
       {props.children}
     </View>
   );
