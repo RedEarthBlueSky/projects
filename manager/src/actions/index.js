@@ -24,11 +24,6 @@ export const passwordChanged = (text) => {
   };
 };
 
-//  misstep of logic here of trying to create a new user if login fails
-//  rather than prompting email/password unrecognized
-//  recover password
-//  create new user
-//  this logic progression doesn't work
 export const loginUser = ({ email, password }) => {
   return (dispatch) => {
     dispatch({ type: LOGIN_USER });
@@ -54,7 +49,5 @@ const loginUserSuccess = (dispatch, user) => {
     payload: user
   });
 
-  //  relates to the key component of the scene
-  //  on successful login we natigate to the employeeList screen
   Actions.employeeList();
 };
