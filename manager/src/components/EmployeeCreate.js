@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { Picker, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { employeeUpdate } from '../actions';
+import { employeeUpdate, employeeCreate } from '../actions';
 import { Container, Section, Input, Button } from './common';
 
 class EmployeeCreate extends Component {
+  onButtonPress() {
+    const { name, phone, shift } = this.props;
+
+    this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
+  }
+
   render() {
     return (
       <Container style={{ flex: 1, flexDirection: 'column' }}>
@@ -43,7 +49,9 @@ class EmployeeCreate extends Component {
         </Section>
 
         <Section style={{ flex: 0.08 }}>
-          <Button>
+          <Button
+            onPress={this.onButtonPress.bind(this)}
+          >
             Create
           </Button>
         </Section>
@@ -54,8 +62,8 @@ class EmployeeCreate extends Component {
 
 const styles = {
   pickerText: {
-    flex: 0.1,
-    fontSite: 18,
+    flex: 0.09,
+    fontSize: 18,
     paddingLeft: 20,
     paddingBottom: 0
   }
@@ -67,4 +75,5 @@ const mapStateToProps = (state) => {
   return { name, phone, shift };
 };
 
-export default connect(mapStateToProps, { employeeUpdate })(EmployeeCreate);
+export default connect(mapStateToProps,
+  { employeeUpdate, employeeCreate })(EmployeeCreate);

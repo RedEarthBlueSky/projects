@@ -34,7 +34,6 @@ class LoginForm extends Component {
   render() {
     return (
       <Container>
-
         <Section>
           <Input
             label='Email'
@@ -43,7 +42,6 @@ class LoginForm extends Component {
             value={this.props.email}
           />
         </Section>
-
         <Section>
           <Input
             secureTextEntry
@@ -53,15 +51,12 @@ class LoginForm extends Component {
             value={this.props.password}
           />
         </Section>
-
         <Text style={styles.errorTextStyle}>
           {this.props.error}
         </Text>
-
         <Section>
           {this.renderButton()}
         </Section>
-
       </Container>
     );
   }
