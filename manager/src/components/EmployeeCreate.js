@@ -30,7 +30,6 @@ class EmployeeCreate extends Component {
             onChangeText={value => this.props.employeeUpdate({ prop: 'phone', value })}
           />
         </Section>
-
         <Section style={{ flex: 0.4, flexDirection: 'column' }}>
           <Text style={styles.pickerText}>Select a Shift</Text>
           <Picker
@@ -47,7 +46,6 @@ class EmployeeCreate extends Component {
             <Picker.Item label='Sunday' value='Sunday' />
           </Picker>
         </Section>
-
         <Section style={{ flex: 0.08 }}>
           <Button
             onPress={this.onButtonPress.bind(this)}

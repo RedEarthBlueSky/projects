@@ -1,6 +1,8 @@
 import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 import {
-  EMPLOYEE_UPDATE
+  EMPLOYEE_UPDATE,
+  EMPLOYEE_CREATE
 } from './types';
 
 export const employeeUpdate = ({ prop, value }) => {
@@ -15,6 +17,12 @@ export const employeeCreate = ({ name, phone, shift }) => {
 
   //  return is redux thunk hack to overcome error message that the action has
   //  not returned a plane object
-  firebase.database().ref(`/users/${currentUser.uid}/employees`)
-    .push({ name, phone, shift });
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees`)
+      .push({ name, phone, shift })
+      .then(() => {
+        dispatch({ type: EMPLOYEE_CREATE })
+        Actions.employeeList();
+      });
+  };
 };
