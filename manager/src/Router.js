@@ -16,6 +16,7 @@ const RouterComponent = () => {
             key='login'
             component={LoginForm}
             title='Please Login'
+            initial
           />
           <Scene
             type='reset'  // hide back button
@@ -29,7 +30,6 @@ const RouterComponent = () => {
             key='employeeCreate'
             component={EmployeeCreate}
             title='Create Employee'
-            initial
           />
       </Scene>
     </Router>
