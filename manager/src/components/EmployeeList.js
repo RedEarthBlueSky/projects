@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ListView, View, Text } from 'react-native';
+import { ListView } from 'react-native';
 import { employeesFetch } from '../actions';
+import ListItem from './ListItem';
 
 class EmployeeList extends Component {
   componentWillMount() {
@@ -12,9 +13,8 @@ class EmployeeList extends Component {
     this.createDataSource(this.props);
   }
 
-  //
   componentWillReceiveProps(nextProps) {
-    //  nextProps are the next set of props this components
+    //  nextProps are the next set of props this component
     //  will be rendered with
     //  this.props is still the old set of props
     this.createDataSource(nextProps);
@@ -28,18 +28,18 @@ class EmployeeList extends Component {
     this.dataSource = ds.cloneWithRows(employees);
   }
 
+  renderRow(employee) {
+    return <ListItem employee={employee} />;
+  }
+
   render() {
+    console.log(this.props);
     return (
-      <View>
-        <Text> Employee List! </Text>
-        <Text> Employee List! </Text>
-        <Text> Employee List! </Text>
-        <Text> Employee List! </Text>
-        <Text> Employee List! </Text>
-        <Text> Employee List! </Text>
-        <Text> Employee List! </Text>
-        <Text> Employee List! </Text>
-      </View>
+      <ListView
+        enableEmptySection
+        dataSource={this.dataSource}
+        renderRow={this.renderRow}
+      />
     );
   }
 }
@@ -48,6 +48,8 @@ const mapStateToProps = state => {
   const employees = _.map(state.employees, (val, uid) => {
     return { ...val, uid }; // { shift: 'Monday', name: 'S', id: 'dfddfd' }
   });
+
+  return { employees };
 };
 
-export default connect(null, { employeesFetch })(EmployeeList);
+export default connect(mapStateToProps, { employeesFetch })(EmployeeList);
