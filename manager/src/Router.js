@@ -16,7 +16,6 @@ const RouterComponent = () => {
             key='login'
             component={LoginForm}
             title='Please Login'
-            initial
           />
           <Scene
             type='reset'  // hide back button
