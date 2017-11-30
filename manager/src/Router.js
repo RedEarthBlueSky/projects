@@ -13,11 +13,7 @@ const RouterComponent = () => {
   return (
     <Router sceneStyle={{ paddingTop: 0 }}>
       <Scene key='root'>
-          <Scene
-            key='login'
-            component={LoginForm}
-            title='Please Login'
-          />
+          <Scene key='login' component={LoginForm} title='Please Login' />
           <Scene
             type='reset'  // hide back button
             onRight={() => Actions.employeeCreate()}
