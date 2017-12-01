@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import Communications from 'react-native-communications';
 import EmployeeForm from './EmployeeForm';
 import { employeeUpdate, employeeSave } from '../actions';
-import { Container, Section, Button } from './common';
+import { Container, Section, Button, ConfirmModal } from './common';
 
 class EmployeeEdit extends Component {
+  state = { showModal: false };
   componentWillMount() {
     _.each(this.props.employee, (value, prop) => {
       this.props.employeeUpdate({ prop, value });
@@ -28,7 +29,6 @@ class EmployeeEdit extends Component {
   render() {
     return (
       <Container>
-
         <EmployeeForm />
 
         <Section>
@@ -42,6 +42,21 @@ class EmployeeEdit extends Component {
             Text Schedule
           </Button>
         </Section>
+
+        <Section>
+          <Button
+            onPress={() => this.setState({
+              showModal: !this.state.showModal })}
+          >
+            Fire Employee
+          </Button>
+        </Section>
+
+        <ConfirmModal
+          visible={this.state.showModal}
+        >
+          Are you sure you want to delete this?
+        </ConfirmModal>
 
       </Container>
     );
